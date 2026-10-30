@@ -1,0 +1,15 @@
+{
+  "name": "mz-tech-hub-store",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.5",
+    "mongodb": "^7.7.0"
+  },
+  "devDependencies": {
+    "prettier": "3.9.9"
+  }
+}

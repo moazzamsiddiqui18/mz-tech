@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7f4" />
+    <title>Shop dashboard | MZ Tech Hub</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin.css" />
+    <script src="/admin.js" defer></script>
+  </head>
+  <body>
+    <section class="login-screen" id="login-screen">
+      <form class="login-card" id="login-form">
+        <a class="brand" href="/" aria-label="MZ Tech Hub home"
+          ><span class="brand-mark">M</span
+          ><span>MZ <strong>TECH HUB</strong></span></a
+        >
+        <p class="eyebrow">SHOP ADMIN</p>
+        <h1>Welcome back</h1>
+        <p class="muted">
+          Sign in with your configured admin account to manage your shop.
+        </p>
+        <label
+          >Email address<input
+            name="email"
+            type="email"
+            autocomplete="username"
+            required
+        /></label>
+        <label
+          >Password<input
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            minlength="8"
+            required
+        /></label>
+        <p class="form-message" id="login-message" role="alert"></p>
+        <button class="button button-primary button-wide" type="submit">
+          Sign in to dashboard
+        </button>
+        <a class="back-link" href="/">← Back to the shop</a>
+      </form>
+    </section>
+
+    <div class="app-shell" id="app-shell" hidden>
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="/" aria-label="MZ Tech Hub home"
+          ><span class="brand-mark">M</span
+          ><span>MZ <strong>TECH HUB</strong></span></a
+        >
+        <p class="sidebar-label">WORKSPACE</p>
+        <nav class="side-nav" aria-label="Shop management">
+          <button class="nav-item active" type="button" data-page="overview">
+            <span>◫</span> Overview
+          </button>
+          <button class="nav-item" type="button" data-page="products">
+            <span>▦</span> Products
+          </button>
+          <button class="nav-item" type="button" data-page="orders">
+            <span>▤</span> Orders
+          </button>
+          <button class="nav-item" type="button" data-page="inventory">
+            <span>▣</span> Inventory
+          </button>
+          <button class="nav-item" type="button" data-page="sales">
+            <span>↗</span> Sales & reports
+          </button>
+        </nav>
+        <div class="sidebar-bottom">
+          <a class="store-link" href="/">↗ <span>View storefront</span></a>
+          <button class="user-card" id="logout-button" type="button">
+            <span class="avatar" id="user-avatar">M</span>
+            <span class="user-meta"
+              ><strong id="user-name">Shop admin</strong
+              ><small>Sign out</small></span
+            >
+            <span class="logout-icon">↗</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <button
+            class="mobile-menu"
+            id="mobile-menu"
+            type="button"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+          <div class="breadcrumb">
+            <span>Shop</span><span>/</span
+            ><strong id="page-title">Overview</strong>
+          </div>
+          <a class="topbar-store" href="/">View storefront <span>↗</span></a>
+        </header>
+        <div class="page-content">
+          <div class="notice" id="global-notice" role="status" hidden></div>
+
+          <section class="page active" id="page-overview">
+            <div class="welcome-row">
+              <div>
+                <p class="eyebrow">YOUR SHOP AT A GLANCE</p>
+                <h1>Good day<span class="accent">.</span></h1>
+                <p class="muted">Here’s what’s happening with your store.</p>
+              </div>
+              <button
+                class="button button-primary"
+                id="overview-add-product"
+                type="button"
+              >
+                ＋ Add a product
+              </button>
+            </div>
+            <div class="stats-grid">
+              <article class="stat-card stat-green">
+                <span class="stat-icon">▦</span
+                ><span class="stat-label">Active products</span
+                ><strong id="stat-products">—</strong
+                ><small>In your catalog</small>
+              </article>
+              <article class="stat-card stat-peach">
+                <span class="stat-icon">▤</span
+                ><span class="stat-label">Orders today</span
+                ><strong id="stat-orders">—</strong
+                ><small>Online orders received</small>
+              </article>
+              <article class="stat-card stat-blue">
+                <span class="stat-icon">▣</span
+                ><span class="stat-label">Units in stock</span
+                ><strong id="stat-stock">—</strong
+                ><small id="stat-low-stock">Across all products</small>
+              </article>
+              <article class="stat-card stat-lime">
+                <span class="stat-icon">↗</span
+                ><span class="stat-label">Manual sales today</span
+                ><strong id="stat-sales">—</strong
+                ><small id="stat-revenue">Recorded in store</small>
+              </article>
+            </div>
+            <div class="overview-grid">
+              <section class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <p class="eyebrow">LATEST ACTIVITY</p>
+                    <h2>Recent orders</h2>
+                  </div>
+                  <button
+                    class="text-button"
+                    type="button"
+                    data-open-page="orders"
+                  >
+                    All orders →
+                  </button>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Order</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="recent-orders"></tbody>
+                  </table>
+                </div>
+                <div class="empty-state" id="recent-orders-empty" hidden>
+                  No orders yet. New online orders will appear here.
+                </div>
+              </section>
+              <section class="panel quick-panel">
+                <div class="panel-heading">
+                  <div>
+                    <p class="eyebrow">QUICK ACTIONS</p>
+                    <h2>Keep things moving</h2>
+                  </div>
+                </div>
+                <button
+                  class="quick-action"
+                  type="button"
+                  data-open-page="products"
+                >
+                  <span class="quick-icon green-icon">＋</span
+                  ><span
+                    ><strong>Add a product</strong
+                    ><small>Grow your shop catalog</small></span
+                  ><b>→</b>
+                </button>
+                <button
+                  class="quick-action"
+                  type="button"
+                  data-open-page="inventory"
+                >
+                  <span class="quick-icon peach-icon">↕</span
+                  ><span
+                    ><strong>Update stock</strong
+                    ><small>Adjust inventory levels</small></span
+                  ><b>→</b>
+                </button>
+                <button
+                  class="quick-action"
+                  type="button"
+                  data-open-page="sales"
+                >
+                  <span class="quick-icon blue-icon">↗</span
+                  ><span
+                    ><strong>Record a sale</strong
+                    ><small>Log an in-person purchase</small></span
+                  ><b>→</b>
+                </button>
+              </section>
+            </div>
+          </section>
+
+          <section class="page" id="page-products">
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">YOUR CATALOG</p>
+                <h1>Products</h1>
+                <p class="muted">
+                  Add new items and keep your product details up to date.
+                </p>
+              </div>
+              <button
+                class="button button-primary"
+                id="add-product-button"
+                type="button"
+              >
+                ＋ Add product
+              </button>
+            </div>
+            <section class="panel">
+              <div class="toolbar">
+                <div class="search-field">
+                  <span>⌕</span
+                  ><input
+                    id="product-search"
+                    type="search"
+                    placeholder="Search products..."
+                    aria-label="Search products"
+                  />
+                </div>
+                <span class="result-count" id="product-count"></span>
+              </div>
+              <div class="product-grid" id="product-grid"></div>
+              <div class="empty-state" id="products-empty" hidden>
+                No products match your search.
+              </div>
+            </section>
+          </section>
+
+          <section class="page" id="page-orders">
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">CUSTOMER CHECKOUTS</p>
+                <h1>Orders</h1>
+                <p class="muted">
+                  Review purchases and keep customers updated.
+                </p>
+              </div>
+            </div>
+            <section class="panel">
+              <div class="toolbar order-toolbar">
+                <div class="search-field">
+                  <span>⌕</span
+                  ><input
+                    id="order-email"
+                    type="search"
+                    placeholder="Filter by customer email..."
+                    aria-label="Filter by customer email"
+                  />
+                </div>
+                <label class="select-field"
+                  ><span>Status</span
+                  ><select id="order-status">
+                    <option value="">All orders</option>
+                    <option value="received">Received</option>
+                    <option value="processing">Processing</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select></label
+                >
+                <button
+                  class="button button-secondary"
+                  id="refresh-orders"
+                  type="button"
+                >
+                  Refresh
+                </button>
+              </div>
+              <div class="table-wrap">
+                <table class="orders-table">
+                  <thead>
+                    <tr>
+                      <th>Order</th>
+                      <th>Customer</th>
+                      <th>Items</th>
+                      <th>Date</th>
+                      <th>Total</th>
+                      <th>Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="orders-table"></tbody>
+                </table>
+              </div>
+              <div class="empty-state" id="orders-empty" hidden>
+                No orders found for these filters.
+              </div>
+              <div class="table-footer" id="orders-pagination">
+                <span id="orders-count"></span
+                ><button
+                  class="button button-secondary"
+                  id="load-more-orders"
+                  type="button"
+                >
+                  Load more
+                </button>
+              </div>
+            </section>
+          </section>
+
+          <section class="page" id="page-inventory">
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">STOCK CONTROL</p>
+                <h1>Inventory</h1>
+                <p class="muted">
+                  Know what’s on the shelf and adjust stock as things move.
+                </p>
+              </div>
+            </div>
+            <div class="inventory-layout">
+              <section class="panel inventory-panel">
+                <div class="panel-heading">
+                  <div>
+                    <p class="eyebrow">CURRENT STOCK</p>
+                    <h2>Stock levels</h2>
+                  </div>
+                  <button
+                    class="button button-secondary"
+                    id="refresh-inventory"
+                    type="button"
+                  >
+                    Refresh
+                  </button>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>In stock</th>
+                        <th>Stock status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="inventory-table"></tbody>
+                  </table>
+                </div>
+                <div class="empty-state" id="inventory-empty" hidden>
+                  Add a product to start tracking stock.
+                </div>
+              </section>
+              <section class="panel adjust-panel">
+                <div class="panel-heading">
+                  <div>
+                    <p class="eyebrow">STOCK MOVEMENT</p>
+                    <h2>Adjust inventory</h2>
+                  </div>
+                </div>
+                <form id="inventory-form" class="stack-form">
+                  <label
+                    >Product<select
+                      name="productId"
+                      id="inventory-product"
+                      required
+                    ></select
+                  ></label>
+                  <label
+                    >Change in quantity
+                    <div class="input-with-sign">
+                      <span>±</span
+                      ><input
+                        name="quantityChange"
+                        type="number"
+                        step="1"
+                        required
+                        placeholder="e.g. 12 or -2"
+                      /></div
+                  ></label>
+                  <p class="field-hint">
+                    Use a positive number for new stock or a negative number for
+                    stock sold/removed.
+                  </p>
+                  <label
+                    >Reason <span class="optional">(optional)</span
+                    ><input
+                      name="reason"
+                      type="text"
+                      maxlength="240"
+                      placeholder="e.g. New delivery"
+                  /></label>
+                  <button
+                    class="button button-primary button-wide"
+                    type="submit"
+                  >
+                    Save stock adjustment
+                  </button>
+                </form>
+              </section>
+            </div>
+            <section class="panel history-panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">AUDIT TRAIL</p>
+                  <h2>Recent stock changes</h2>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Change</th>
+                      <th>New total</th>
+                      <th>Reason</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody id="inventory-history"></tbody>
+                </table>
+              </div>
+              <div class="empty-state" id="history-empty" hidden>
+                No inventory changes yet.
+              </div>
+            </section>
+          </section>
+
+          <section class="page" id="page-sales">
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">IN-PERSON PERFORMANCE</p>
+                <h1>Sales & reports</h1>
+                <p class="muted">
+                  Log shop-floor sales and see which products are selling.
+                </p>
+              </div>
+            </div>
+            <div class="sales-layout">
+              <section class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <p class="eyebrow">AT THE COUNTER</p>
+                    <h2>Record a manual sale</h2>
+                  </div>
+                </div>
+                <form id="sale-form" class="stack-form">
+                  <label
+                    >Product<select
+                      name="productId"
+                      id="sale-product"
+                      required
+                    ></select
+                  ></label>
+                  <label
+                    >Quantity<input
+                      name="quantity"
+                      type="number"
+                      min="1"
+                      max="9999"
+                      step="1"
+                      value="1"
+                      required
+                  /></label>
+                  <label
+                    >Note <span class="optional">(optional)</span
+                    ><input
+                      name="note"
+                      type="text"
+                      maxlength="500"
+                      placeholder="Walk-in purchase"
+                  /></label>
+                  <div class="sale-preview">
+                    <span>Sale total</span
+                    ><strong id="sale-preview-total">—</strong>
+                  </div>
+                  <button
+                    class="button button-primary button-wide"
+                    type="submit"
+                  >
+                    Record sale
+                  </button>
+                </form>
+              </section>
+              <section class="panel report-panel">
+                <div class="panel-heading">
+                  <div>
+                    <p class="eyebrow">SHOP PERFORMANCE</p>
+                    <h2>Sales report</h2>
+                  </div>
+                </div>
+                <form id="report-form" class="report-filters">
+                  <label>From<input name="from" type="date" required /></label>
+                  <label>To<input name="to" type="date" required /></label>
+                  <button class="button button-secondary" type="submit">
+                    Run report
+                  </button>
+                </form>
+                <div class="report-summary" id="report-summary">
+                  <div><span>Total revenue</span><strong>—</strong></div>
+                  <div><span>Sales</span><strong>—</strong></div>
+                  <div><span>Items sold</span><strong>—</strong></div>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Product</th>
+                        <th>Units sold</th>
+                        <th>Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody id="sales-report-table"></tbody>
+                  </table>
+                </div>
+                <div class="empty-state" id="sales-report-empty" hidden>
+                  No manual sales in this date range.
+                </div>
+              </section>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="product-dialog" id="product-dialog">
+      <form id="product-form" class="dialog-card">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">PRODUCT DETAILS</p>
+            <h2 id="product-dialog-title">Add a product</h2>
+          </div>
+          <button
+            class="icon-close"
+            id="close-product-dialog"
+            type="button"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+        <label
+          >Product name<input
+            name="name"
+            type="text"
+            maxlength="80"
+            placeholder="e.g. Wireless Charger"
+            required
+        /></label>
+        <label
+          >Product ID <span class="optional">lowercase, hyphens</span
+          ><input
+            name="id"
+            type="text"
+            pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
+            placeholder="e.g. wireless-charger"
+            required
+        /></label>
+        <label
+          >Category<input
+            name="category"
+            type="text"
+            maxlength="40"
+            pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
+            placeholder="e.g. power"
+            required
+        /></label>
+        <label
+          >Price<input
+            name="price"
+            type="number"
+            min="0.01"
+            max="1000000"
+            step="0.01"
+            placeholder="0.00"
+            required
+        /></label>
+        <p class="form-message" id="product-form-message" role="alert"></p>
+        <div class="dialog-actions">
+          <button
+            class="button button-secondary"
+            id="cancel-product-dialog"
+            type="button"
+          >
+            Cancel</button
+          ><button
+            class="button button-primary"
+            id="save-product-button"
+            type="submit"
+          >
+            Save product
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="order-dialog" id="order-dialog">
+      <div class="dialog-card">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">ORDER DETAILS</p>
+            <h2 id="order-dialog-title">Order</h2>
+          </div>
+          <button
+            class="icon-close"
+            id="close-order-dialog"
+            type="button"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+        <div id="order-details"></div>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

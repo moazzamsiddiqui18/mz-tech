@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MZ Tech Hub - considered accessories for the way you connect, work and move.">
+    <title>MZ Tech Hub | Mobile accessories, made better</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="images/hero-phone-laptop-mz.jpg" fetchpriority="high">
+    <style>
+        :root {
+            --ink: #20213f;
+            --muted: #77788f;
+            --paper: #f6f5fb;
+            --surface: #fffefe;
+            --line: #e2e1ed;
+            --lime: #d9d0ff;
+            --coral: #8b70f5;
+            --teal: #bfe8f2;
+            --shadow: 0 16px 35px rgba(32, 33, 63, .09);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { margin: 0; background: var(--paper); color: var(--ink); font-family: "DM Sans", sans-serif; }
+        button, input { font: inherit; }
+        button { cursor: pointer; }
+        a { color: inherit; text-decoration: none; }
+        .shell { max-width: 1240px; margin: auto; padding: 0 28px; }
+
+        .announcement { background: var(--ink); color: #f8faf4; text-align: center; padding: 10px 20px; font-size: 12px; letter-spacing: 0; }
+        header { background: var(--paper); border-bottom: 1px solid var(--line); }
+        .nav { min-height: 76px; display: flex; align-items: center; gap: 38px; }
+        .brand { font: 700 22px "Space Grotesk", sans-serif; letter-spacing: 0; display: flex; align-items: center; gap: 9px; }
+        .brand-mark { width: 27px; height: 27px; display: grid; place-items: center; background: var(--coral); color: white; border-radius: 8px 8px 8px 2px; font-size: 15px; }
+        .nav-links { display: flex; gap: 25px; color: #686982; font-size: 14px; }
+        .nav-links a:first-child { color: var(--ink); font-weight: 700; }
+        .nav-actions { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+        .icon-btn { border: 0; background: transparent; width: 39px; height: 39px; display: grid; place-items: center; color: var(--ink); border-radius: 50%; }
+        .icon-btn:hover { background: #e9e7f4; }
+        .cart-btn { position: relative; }
+        .cart-count { position: absolute; top: 0; right: -1px; background: var(--coral); color: white; width: 16px; height: 16px; border-radius: 50%; font-size: 10px; display: grid; place-items: center; }
+
+        .hero { padding: 44px 0 42px; }
+        .hero-grid { display: grid; grid-template-columns: 1.03fr .97fr; min-height: 425px; overflow: hidden; border-radius: 4px; background: var(--lime); }
+        .hero-copy { padding: clamp(34px, 6vw, 76px); display: flex; flex-direction: column; justify-content: center; }
+        .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; margin: 0 0 19px; }
+        h1, h2, h3 { font-family: "Space Grotesk", sans-serif; letter-spacing: 0; margin: 0; }
+        h1 { font-size: 64px; line-height: .98; max-width: 570px; background: linear-gradient(110deg, var(--coral) 0%, var(--ink) 46%, #528bd7 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero-copy p { max-width: 415px; line-height: 1.65; color: #4c4d70; margin: 23px 0 27px; font-size: 15px; }
+        .primary-btn { background: var(--ink); color: white; border: 0; padding: 14px 21px; border-radius: 3px; font-weight: 700; font-size: 13px; width: fit-content; transition: transform .2s, background .2s; }
+        .primary-btn:hover { transform: translateY(-2px); background: #39336a; }
+        body[data-theme="dark"] .hero-actions .primary-btn { background: #14152b; color: #f2f0ff; }
+        body[data-theme="dark"] .hero-actions .primary-btn:hover { background: #302b58; }
+        .hero-art { position: relative; overflow: hidden; background: #e9e5fa; display: grid; place-items: center; }
+        .hero-art::before { content: ""; width: 310px; height: 310px; background: var(--coral); border-radius: 50%; position: absolute; right: -30px; bottom: -92px; }
+        .hero-art::after { content: ""; width: 180px; height: 180px; border: 28px solid var(--teal); border-radius: 50%; position: absolute; top: -56px; left: -38px; }
+        .phone { width: 190px; height: 350px; border: 9px solid #20213f; background: #7d72c7; border-radius: 28px; transform: rotate(12deg); position: relative; z-index: 1; box-shadow: 20px 22px 0 rgba(32,33,63,.16); overflow: hidden; }
+        .phone::before { content: ""; position: absolute; inset: 21px 13px; border-radius: 18px; background: linear-gradient(145deg, #bfe8f2 0 35%, #8b70f5 35% 63%, #e8a3d5 63%); }
+        .phone::after { content: ""; position: absolute; top: 7px; left: 59px; width: 55px; height: 14px; background: #20213f; border-radius: 20px; }
+
+        .section { padding: 8px 0 60px; }
+        .section-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 24px; }
+        h2 { font-size: 32px; }
+        .section-head p { color: var(--muted); font-size: 13px; margin: 0; }
+        .category-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
+        .category-item { position: relative; }
+        .category { border: 1px solid var(--line); background: var(--surface); padding: 19px; min-height: 100px; display: flex; flex-direction: column; justify-content: space-between; transition: border .2s, transform .2s; }
+        .category:hover { border-color: var(--ink); transform: translateY(-3px); }
+        .category-edit { position: absolute; z-index: 1; top: 10px; right: 10px; border: 0; background: transparent; color: var(--muted); padding: 5px; font-size: 11px; }
+        .category-edit:hover { color: var(--ink); text-decoration: underline; }
+        .category-editor { position: absolute; z-index: 2; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 7px; padding: 10px; background: var(--surface); }
+        .category-editor[hidden] { display: none; }
+        .category-editor input { width: 100%; min-width: 0; border: 1px solid var(--line); padding: 7px; font-size: 12px; }
+        .category-editor-actions { display: flex; justify-content: flex-end; gap: 6px; }
+        .category-editor-actions button { border: 1px solid var(--line); background: var(--surface); padding: 5px 8px; font-size: 11px; }
+        .category-editor-actions button[type="submit"] { border-color: var(--ink); background: var(--ink); color: white; }
+        .category-icon { font-size: 24px; }
+        .category strong { font-size: 14px; }
+        .category span { color: var(--muted); font-size: 12px; margin-top: 6px; }
+
+        .shop-bar { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 23px; }
+        .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+        .filter { background: transparent; border: 1px solid var(--line); color: var(--muted); padding: 9px 14px; font-size: 12px; border-radius: 6px; }
+        .filter.active, .filter:hover { background: var(--ink); border-color: var(--ink); color: white; }
+        .search { border: 1px solid var(--line); background: transparent; padding: 10px 13px; width: 180px; font-size: 12px; outline: 0; }
+        .search:focus { border-color: var(--ink); }
+        .search-wrap { position: relative; display: flex; align-items: center; width: 210px; color: var(--muted); }
+        .search-wrap > span { position: absolute; left: 12px; font-size: 17px; pointer-events: none; }
+        .search-wrap .search { width: 100%; padding-left: 34px; padding-right: 34px; }
+        .clear-search { position: absolute; right: 8px; border: 0; background: transparent; color: var(--muted); font-size: 18px; line-height: 1; padding: 4px; }
+        .clear-search:hover { color: var(--ink); }
+        .no-results { margin: 25px 0 0; padding: 25px; border: 1px dashed var(--line); color: var(--muted); text-align: center; font-size: 13px; }
+        .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .product { min-width: 0; position: relative; }
+        .product-visual { aspect-ratio: 1 / 1.08; display: grid; place-items: center; position: relative; overflow: hidden; }
+        .product-visual::before { content: ""; position: absolute; width: 145px; height: 145px; border-radius: 50%; background: rgba(255,255,255,.35); }
+        .product:nth-child(1) .product-visual { background: #c8e8d5; }
+        .product:nth-child(2) .product-visual { background: #f4d29c; }
+        .product:nth-child(3) .product-visual { background: #c6d3e9; }
+        .product:nth-child(4) .product-visual { background: #e7c0ba; }
+        .product:nth-child(5) .product-visual { background: #ded6be; }
+        .product:nth-child(6) .product-visual { background: #b6d8d1; }
+        .product:nth-child(7) .product-visual { background: #dfe9d1; }
+        .product:nth-child(8) .product-visual { background: #cfe6f1; }
+        .product:nth-child(9) .product-visual { background: #f0d7cf; }
+        .product:nth-child(10) .product-visual { background: #d9d7ef; }
+        .product-visual img { width: 70%; height: 70%; object-fit: contain; position: relative; z-index: 1; filter: drop-shadow(10px 12px 5px rgba(0,0,0,.14)); }
+        .visual-shape { position: relative; z-index: 1; width: 97px; height: 132px; border: 7px solid var(--ink); background: #789c8d; border-radius: 18px; transform: rotate(-12deg); box-shadow: 8px 9px 0 rgba(23,35,31,.15); }
+        .visual-shape::after { content: ""; position: absolute; top: 8px; left: 28px; width: 28px; height: 7px; border-radius: 10px; background: var(--ink); }
+        .visual-shape.case { height: 85px; width: 143px; border-radius: 40px; transform: rotate(10deg); background: #f4f0e8; }
+        .visual-shape.case::after { top: 29px; left: 22px; width: 28px; height: 28px; border: 6px solid var(--ink); background: transparent; border-radius: 50%; }
+        .visual-shape.earbuds { width: 80px; height: 115px; border-radius: 45px 45px 28px 28px; background: white; transform: rotate(8deg); }
+        .visual-shape.earbuds::after { top: 43px; left: 27px; width: 20px; height: 39px; background: var(--ink); border-radius: 12px; }
+        .visual-shape.power { width: 112px; height: 75px; border-radius: 13px; background: #ff745d; transform: rotate(-8deg); }
+        .visual-shape.power::after { top: 19px; left: 45px; width: 13px; height: 13px; background: var(--lime); border-radius: 50%; }
+        .badge { position: absolute; top: 12px; left: 12px; z-index: 2; background: var(--ink); color: white; padding: 5px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0; }
+        .product-info { padding: 14px 1px 4px; }
+        .product-info h3 { font-size: 16px; letter-spacing: 0; }
+        .product-meta { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; align-items: center; }
+        .price { font-size: 14px; font-weight: 700; }
+        .stars { font-size: 11px; color: #d18a2f; }
+        .add { width: 100%; border: 1px solid var(--ink); padding: 10px; background: transparent; font-size: 12px; font-weight: 700; margin-top: 13px; }
+        .add:hover { background: var(--ink); color: white; }
+
+        .feature-band { background: var(--teal); padding: 33px 0; margin-top: 10px; }
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        .feature { display: flex; gap: 14px; align-items: flex-start; }
+        .feature-icon { font-size: 24px; }
+        .feature h3 { font-size: 15px; letter-spacing: 0; }
+        .feature p { margin: 6px 0 0; color: #4c4d70; font-size: 12px; line-height: 1.45; }
+        footer { padding: 36px 0; font-size: 12px; color: var(--muted); }
+        .footer-inner { display: flex; justify-content: space-between; }
+        .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 100px); background: var(--ink); color: white; padding: 13px 18px; font-size: 13px; z-index: 5; transition: transform .25s ease; box-shadow: var(--shadow); }
+        .toast.show { transform: translate(-50%, 0); }
+
+        @media (max-width: 800px) {
+            .shell { padding: 0 18px; }
+            .nav { gap: 15px; min-height: 66px; }
+            .nav-links { display: none; }
+            h1 { font-size: 52px; }
+            .hero { padding: 25px 18px 32px; }
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-copy { min-height: 335px; padding: 38px 27px; }
+            .hero-art { min-height: 260px; }
+            .phone { transform: rotate(12deg) scale(.76); }
+            .category-list { grid-template-columns: repeat(2, 1fr); }
+            .products { grid-template-columns: repeat(2, 1fr); gap: 24px 12px; }
+            .shop-bar { align-items: flex-start; flex-direction: column; }
+            .search-wrap { width: 100%; }
+            .search { width: 100%; }
+            .features { grid-template-columns: 1fr; gap: 20px; }
+            .footer-inner { flex-direction: column; gap: 9px; }
+        }
+        @media (max-width: 420px) {
+            h1 { font-size: 42px; }
+            h2 { font-size: 28px; }
+            .brand { font-size: 19px; }
+            .nav-actions .icon-btn:first-child { display: none; }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="announcement">FREE SHIPPING ON ORDERS OVER $50 &nbsp; / &nbsp; 30-DAY EASY RETURNS</div>
+    <header>
+        <nav class="nav shell" aria-label="Main navigation">
+            <a class="brand" href="#top" aria-label="MZ Tech Hub home">
+                <img src="logo.svg" alt="MZ Tech Hub logo" class="brand-logo" />
+            </a>
+            <div class="nav-links"><a href="#shop">Shop all</a><a href="#categories">Collections</a><a href="#saved-items">Saved items <span class="favorite-count">0</span></a><a href="#track-order">Track order</a><a href="#about">Why MZ Tech Hub</a></div>
+            <div class="nav-actions">
+                <button class="icon-btn" aria-label="Search" onclick="document.querySelector('.search').focus()">⌕</button>
+                <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" aria-pressed="false">☾</button>
+                <button class="account-btn" type="button" aria-label="Open account" aria-controls="account-modal">Sign in</button>
+                <button class="icon-btn cart-btn" aria-label="Shopping cart" aria-controls="shopping-cart" aria-expanded="false" type="button">♧<span class="cart-count" aria-hidden="true">0</span></button>
+            </div>
+        </nav>
+    </header>
+    <main id="top">
+        <section class="hero shell">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Everyday tech, considered</p>
+                    <h1>Premium gear for the way you live, work, and move.</h1>
+                    <p>Upgrade your everyday setup with sleek accessories built for speed, style, and smarter routines.</p>
+                    <div class="hero-actions">
+                        <a class="primary-btn" href="#shop">Shop now <span aria-hidden="true">→</span></a>
+                        <a class="secondary-btn" href="#about">Explore more</a>
+                    </div>
+                    <div class="mini-trust">
+                        <span>4.9/5 customer rating</span>
+                        <span>Free shipping over $50</span>
+                    </div>
+                </div>
+                <div class="hero-art" aria-label="Real iPhone product render">
+                    <div class="floating-card card-one">
+                        <strong>4.9/5</strong>
+                        <span>trusted by shoppers</span>
+                    </div>
+                    <div class="floating-card card-two">
+                        <strong>12k+</strong>
+                        <span>happy customers</span>
+                    </div>
+                    <img class="hero-product-image" src="images/hero-phone-laptop-mz.jpg" alt="MZ Tech Hub storefront displayed on a smartphone beside a laptop" fetchpriority="high" decoding="async">
+                </div>
+            </div>
+        </section>
+
+        <section class="section shell trust-strip" aria-label="Brand highlights">
+            <div class="trust-item"><strong>200+</strong><span>customers served</span></div>
+            <div class="trust-item"><strong>48h</strong><span>fast dispatch</span></div>
+            <div class="trust-item"><strong>30-day</strong><span>easy returns</span></div>
+            <div class="trust-item"><strong>Top rated</strong><span>quality accessories</span></div>
+        </section>
+
+        <section class="welcome-band shell" aria-label="Our approach">
+            <div class="welcome-copy">
+                <p class="eyebrow">A little more considered</p>
+                <p class="welcome-message">Good tech. Beautifully simple.</p>
+            </div>
+            <a class="welcome-link" href="#shop">Explore the collection <span aria-hidden="true">→</span></a>
+        </section>
+
+        <section class="section shell" id="categories">
+            <div class="section-head"><h2>Find your fit</h2><p>Small upgrades. Noticeable difference.</p></div>
+            <div class="category-list">
+                <div class="category-item"><a class="category" href="#shop" data-category-link="cases"><span class="category-icon">◒</span><strong class="category-label">Phone Cases</strong><span>Protection for your phone</span></a><button class="category-edit" type="button" data-rename-category="cases">Edit</button><form class="category-editor" hidden><input type="text" aria-label="New category name" maxlength="40" required><div class="category-editor-actions"><button type="button" data-cancel-rename>Cancel</button><button type="submit">Save</button></div></form></div>
+                <div class="category-item"><a class="category" href="#shop" data-category-link="audio"><span class="category-icon">◉</span><strong class="category-label">Audio</strong><span>Earbuds, speakers and microphones</span></a><button class="category-edit" type="button" data-rename-category="audio">Edit</button><form class="category-editor" hidden><input type="text" aria-label="New category name" maxlength="40" required><div class="category-editor-actions"><button type="button" data-cancel-rename>Cancel</button><button type="submit">Save</button></div></form></div>
+                <div class="category-item"><a class="category" href="#shop" data-category-link="power"><span class="category-icon">◌</span><strong class="category-label">Chargers &amp; Power Banks</strong><span>Wireless chargers and portable power</span></a><button class="category-edit" type="button" data-rename-category="power">Edit</button><form class="category-editor" hidden><input type="text" aria-label="New category name" maxlength="40" required><div class="category-editor-actions"><button type="button" data-cancel-rename>Cancel</button><button type="submit">Save</button></div></form></div>
+                <div class="category-item"><a class="category" href="#shop" data-category-link="wearables"><span class="category-icon">◷</span><strong class="category-label">Wearables</strong><span>Smartwatches for life on the go</span></a><button class="category-edit" type="button" data-rename-category="wearables">Edit</button><form class="category-editor" hidden><input type="text" aria-label="New category name" maxlength="40" required><div class="category-editor-actions"><button type="button" data-cancel-rename>Cancel</button><button type="submit">Save</button></div></form></div>
+                <div class="category-item"><a class="category" href="#shop" data-category-link="workspace"><span class="category-icon">⌨</span><strong class="category-label">Laptop &amp; Desk</strong><span>Everyday tools for your workspace</span></a><button class="category-edit" type="button" data-rename-category="workspace">Edit</button><form class="category-editor" hidden><input type="text" aria-label="New category name" maxlength="40" required><div class="category-editor-actions"><button type="button" data-cancel-rename>Cancel</button><button type="submit">Save</button></div></form></div>
+                <div class="category-item"><a class="category" href="#shop" data-category-link="all"><span class="category-icon">⌁</span><strong class="category-label">All Products</strong><span>Browse the complete collection</span></a><button class="category-edit" type="button" data-rename-category="all">Edit</button><form class="category-editor" hidden><input type="text" aria-label="New category name" maxlength="40" required><div class="category-editor-actions"><button type="button" data-cancel-rename>Cancel</button><button type="submit">Save</button></div></form></div>
+            </div>
+        </section>
+
+        <section class="section shell" id="shop">
+            <div class="section-head"><h2>Popular right now</h2><p>Curated essentials for your setup.</p></div>
+            <div class="shop-bar"><div class="filters"><button class="filter active" data-filter="all">All Products</button><button class="filter" data-filter="cases">Phone Cases</button><button class="filter" data-filter="audio">Audio</button><button class="filter" data-filter="power">Chargers &amp; Power Banks</button><button class="filter" data-filter="wearables">Wearables</button><button class="filter" data-filter="workspace">Laptop &amp; Desk</button><button class="filter" data-filter="new">New Arrivals</button></div><div class="shop-controls"><label class="sort-wrap"><span>Sort by</span><select class="sort-products" aria-label="Sort products"><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="name">Name: A to Z</option></select></label><label class="search-wrap"><span aria-hidden="true">⌕</span><input class="search" type="search" placeholder="Search products..." aria-label="Search products (press / or Ctrl+K)"><kbd class="search-shortcut" aria-hidden="true">/</kbd><button class="clear-search" type="button" aria-label="Clear search">×</button></label></div></div>
+            <div class="products">
+                <article class="product" data-category="cases" data-name="Phone Case"><div class="product-visual"><span class="badge">BESTSELLER</span><img class="case-photo" src="https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Everyday mobile phone case"><div class="visual-shape"></div></div><div class="product-info"><h3>Everyday Case</h3><div class="product-meta"><span class="price">$3.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="cases" data-name="Pocket Wallet"><div class="product-visual"><img class="wallet-photo" src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Snap Wallet phone wallet"><div class="visual-shape case"></div></div><div class="product-info"><h3>Snap Wallet</h3><div class="product-meta"><span class="price">$5.00</span><span class="stars">★★★★☆</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="audio" data-name="Air Buds"><div class="product-visual"><span class="badge">NEW</span><img class="earbuds-photo" src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Cloud Buds wireless earbuds"><div class="visual-shape earbuds"></div></div><div class="product-info"><h3>Cloud Buds</h3><div class="product-meta"><span class="price">$12.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="power" data-name="Power Bank"><div class="product-visual"><img class="power-photo" src="https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Pocket Power portable charger"><div class="visual-shape power"></div></div><div class="product-info"><h3>Pocket Power</h3><div class="product-meta"><span class="price">$15.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="cases" data-name="Mobile Protector"><div class="product-visual"><span class="badge">NEW</span><img class="case-photo" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Halo Shell premium phone case"><div class="visual-shape case"></div></div><div class="product-info"><h3>Halo Shell</h3><div class="product-meta"><span class="price">$9.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="cases" data-name="Ledger Sleeve"><div class="product-visual"><img class="wallet-photo" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Ledger Sleeve slim mobile wallet"><div class="visual-shape case"></div></div><div class="product-info"><h3>Ledger Sleeve</h3><div class="product-meta"><span class="price">$42.00</span><span class="stars">★★★★☆</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="audio" data-name="Orbit Speaker"><div class="product-visual"><img class="earbuds-photo" src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Orbit Speaker portable Bluetooth speaker"><div class="visual-shape earbuds"></div></div><div class="product-info"><h3>Orbit Speaker</h3><div class="product-meta"><span class="price">$59.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="audio" data-name="Aural Mini"><div class="product-visual"><span class="badge">BESTSELLER</span><img class="earbuds-photo" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Aural Mini compact earbuds"><div class="visual-shape earbuds"></div></div><div class="product-info"><h3>Aural Mini</h3><div class="product-meta"><span class="price">$69.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="power" data-name="Grid Charger"><div class="product-visual"><img class="power-photo" src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Grid Charger wireless charging stand"><div class="visual-shape power"></div></div><div class="product-info"><h3>Grid Charger</h3><div class="product-meta"><span class="price">$64.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="power" data-name="Travel Bank"><div class="product-visual"><span class="badge">NEW</span><img class="power-photo" src="https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Travel Bank power bank"><div class="visual-shape power"></div></div><div class="product-info"><h3>Travel Bank</h3><div class="product-meta"><span class="price">$89.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="cases" data-name="Lumen Case"><div class="product-visual"><img class="case-photo" src="https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Lumen Case phone case"><div class="visual-shape"></div></div><div class="product-info"><h3>Lumen Case</h3><div class="product-meta"><span class="price">$32.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="cases" data-name="Terra Grip"><div class="product-visual"><span class="badge">NEW</span><img class="case-photo" src="https://images.unsplash.com/photo-1541877944-ac82a091518a?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Terra Grip protective phone case"><div class="visual-shape case"></div></div><div class="product-info"><h3>Terra Grip</h3><div class="product-meta"><span class="price">$36.00</span><span class="stars">★★★★☆</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="audio" data-name="Studio Loop"><div class="product-visual"><img class="earbuds-photo" src="https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Studio Loop wireless headphones"><div class="visual-shape earbuds"></div></div><div class="product-info"><h3>Studio Loop</h3><div class="product-meta"><span class="price">$99.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="audio" data-name="Mini Mic"><div class="product-visual"><span class="badge">NEW</span><img class="earbuds-photo" src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Mini Mic wireless microphone"><div class="visual-shape earbuds"></div></div><div class="product-info"><h3>Mini Mic</h3><div class="product-meta"><span class="price">$74.00</span><span class="stars">★★★★☆</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="power" data-name="Magnetic Pad"><div class="product-visual"><img class="power-photo" src="https://images.unsplash.com/photo-1618410320928-25228d811631?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Magnetic Pad wireless charger"><div class="visual-shape power"></div></div><div class="product-info"><h3>Magnetic Pad</h3><div class="product-meta"><span class="price">$49.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="power" data-name="Desk Dock"><div class="product-visual"><img class="power-photo" src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Desk Dock charging station"><div class="visual-shape power"></div></div><div class="product-info"><h3>Desk Dock</h3><div class="product-meta"><span class="price">$72.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="wearables" data-name="Pulse Smartwatch"><div class="product-visual"><span class="badge">NEW</span><img class="wearable-photo" src="https://images.unsplash.com/photo-1544117519-31a4b719223d?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Pulse Smartwatch for everyday activity tracking"><div class="visual-shape"></div></div><div class="product-info"><h3>Pulse Smartwatch</h3><div class="product-meta"><span class="price">$129.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+                <article class="product" data-category="workspace" data-name="Studio Keyboard"><div class="product-visual"><img class="workspace-photo" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Studio Keyboard for a comfortable desk setup"><div class="visual-shape"></div></div><div class="product-info"><h3>Studio Keyboard</h3><div class="product-meta"><span class="price">$59.00</span><span class="stars">★★★★★</span></div><button class="add">Add to cart</button></div></article>
+            </div>
+            <p class="product-status" aria-live="polite"></p>
+            <p class="no-results" hidden>No products match those filters. Try another search.</p>
+        </section>
+        <section class="section shell utility-section" id="saved-items">
+            <div class="section-head"><h2>Saved for later <span class="favorite-count-label"></span></h2><p>Keep your everyday favorites close.</p></div>
+            <div class="products saved-products"></div>
+            <p class="collection-empty saved-empty">Your saved items will appear here. Tap the heart on anything you like.</p>
+        </section>
+        <section class="section shell utility-section" id="recently-viewed">
+            <div class="section-head"><h2>Recently viewed</h2><p>Pick up where you left off.</p></div>
+            <div class="products recent-products"></div>
+            <p class="collection-empty recent-empty">Products you browse will show up here.</p>
+        </section>
+        <section class="section shell utility-section compare-section" id="compare-products" hidden>
+            <div class="section-head"><h2>Compare your picks</h2><p>See prices and categories side by side.</p></div>
+            <div class="comparison-wrap"></div>
+        </section>
+        <section class="section shell tracking-section" id="track-order">
+            <div class="section-head"><h2>Track your order</h2><p>Use the order number from your confirmation and your checkout email.</p></div>
+            <form class="tracking-form">
+                <label>Order number<input class="tracking-id" name="orderId" type="text" autocomplete="off" placeholder="MS-ABC123" pattern="MS-[A-Fa-f0-9]{6}" maxlength="9" required></label>
+                <label>Checkout email<input class="tracking-email" name="email" type="email" autocomplete="email" maxlength="160" placeholder="you@example.com" required></label>
+                <button class="track-submit primary-btn" type="submit">Find my order</button>
+            </form>
+            <div class="tracking-result" role="status" aria-live="polite"></div>
+        </section>
+        <section class="feature-band" id="about"><div class="shell features"><div class="feature"><span class="feature-icon">✦</span><div><h3>Built to last</h3><p>Reliable materials and considered details, tested for real life.</p></div></div><div class="feature"><span class="feature-icon">↗</span><div><h3>Easy on the planet</h3><p>Plastic-free packaging and less waste, from our door to yours.</p></div></div><div class="feature"><span class="feature-icon">♡</span><div><h3>Help when you need it</h3><p>Friendly humans are ready to help with your setup.</p></div></div></div></section>
+    </main>
+    <footer><div class="shell footer-inner"><span>© 2026 MZ Tech Hub</span><span>Made for the way you connect.</span></div></footer>
+    <div class="toast" role="status" aria-live="polite">Added to your bag</div>
+    <div class="compare-bar" hidden><span class="compare-selection"></span><button class="compare-open" type="button">Compare selected</button><button class="compare-clear" type="button">Clear</button></div>
+    <aside class="cart-drawer" id="shopping-cart" role="dialog" aria-modal="true" aria-label="Shopping cart" aria-hidden="true" inert>
+        <div class="cart-header"><h2>Your bag</h2><button class="close-cart" type="button" aria-label="Close shopping cart">×</button></div>
+        <div class="shipping-progress">
+            <p class="shipping-progress-message" role="status" aria-live="polite"></p>
+            <progress class="shipping-progress-bar" max="50" value="0" aria-label="Progress toward free shipping"></progress>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-summary">
+            <div><span>Subtotal</span><strong class="cart-subtotal">$0.00</strong></div>
+            <label class="checkout-field">Name for this order<input class="checkout-name" type="text" autocomplete="name" minlength="2" maxlength="80" placeholder="Your full name" required></label>
+            <label class="checkout-field">Email for order updates<input class="checkout-email" type="email" autocomplete="email" maxlength="160" placeholder="you@example.com" required></label>
+            <button class="checkout" type="button">Place order</button>
+            <p class="checkout-message" role="status" aria-live="polite"></p>
+        </div>
+    </aside>
+    <div class="cart-overlay" aria-hidden="true" inert></div>
+    <div class="account-overlay" aria-hidden="true">
+        <section class="account-modal" id="account-modal" role="dialog" aria-modal="true" aria-labelledby="account-title" aria-hidden="true">
+            <button class="close-account" type="button" aria-label="Close account dialog">×</button>
+            <div class="account-heading">
+                <span class="eyebrow">Your MZ account</span>
+                <h2 id="account-title">Welcome back</h2>
+                <p class="account-intro">Save your details and keep your favorite gear close.</p>
+            </div>
+            <div class="account-tabs" role="tablist" aria-label="Account access">
+                <button class="account-tab active" type="button" role="tab" aria-selected="true" data-account-mode="signin">Sign in</button>
+                <button class="account-tab" type="button" role="tab" aria-selected="false" data-account-mode="signup">Create account</button>
+            </div>
+            <form class="account-form">
+                <label class="name-field" hidden>Full name<input name="name" type="text" autocomplete="name" placeholder="Alex Morgan"></label>
+                <label>Email address<input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+                <label>Password<input name="password" type="password" autocomplete="current-password" placeholder="At least 8 characters" minlength="8" required></label>
+                <p class="account-message" role="status"></p>
+                <button class="account-submit primary-btn" type="submit">Sign in</button>
+            </form>
+            <button class="sign-out" type="button" hidden>Sign out</button>
+        </section>
+    </div>
+    <script>
+        const products = [...document.querySelectorAll('.product')];
+        const productGrid = document.querySelector('.products');
+        const filters = [...document.querySelectorAll('.filter')];
+        const sortProducts = document.querySelector('.sort-products');
+        const search = document.querySelector('.search');
+        const clearSearch = document.querySelector('.clear-search');
+        const noResults = document.querySelector('.no-results');
+        const productStatus = document.querySelector('.product-status');
+        const savedProducts = document.querySelector('.saved-products');
+        const savedEmpty = document.querySelector('.saved-empty');
+        const recentProducts = document.querySelector('.recent-products');
+        const recentEmpty = document.querySelector('.recent-empty');
+        const compareSection = document.querySelector('.compare-section');
+        const comparisonWrap = document.querySelector('.comparison-wrap');
+        const compareBar = document.querySelector('.compare-bar');
+        const compareSelection = document.querySelector('.compare-selection');
+        const trackingForm = document.querySelector('.tracking-form');
+        const trackingResult = document.querySelector('.tracking-result');
+        const trackSubmit = document.querySelector('.track-submit');
+        const count = document.querySelector('.cart-count');
+        const toast = document.querySelector('.toast');
+        const cartDrawer = document.querySelector('.cart-drawer');
+        const cartItems = document.querySelector('.cart-items');
+        const cartSubtotal = document.querySelector('.cart-subtotal');
+        const shippingProgressMessage = document.querySelector('.shipping-progress-message');
+        const shippingProgressBar = document.querySelector('.shipping-progress-bar');
+        const checkoutMessage = document.querySelector('.checkout-message');
+        const cartOverlay = document.querySelector('.cart-overlay');
+        const cartButton = document.querySelector('.cart-btn');
+        const accountButton = document.querySelector('.account-btn');
+        const accountOverlay = document.querySelector('.account-overlay');
+        const accountModal = document.querySelector('.account-modal');
+        const accountForm = document.querySelector('.account-form');
+        const accountTabs = [...document.querySelectorAll('.account-tab')];
+        const nameField = document.querySelector('.name-field');
+        const accountTitle = document.querySelector('#account-title');
+        const accountMessage = document.querySelector('.account-message');
+        const accountSubmit = document.querySelector('.account-submit');
+        const signOut = document.querySelector('.sign-out');
+        const themeButton = document.querySelector('.theme-toggle');
+        let accountMode = 'signin';
+        let currentAccount = null;
+        const apiBase = window.location.protocol === 'file:' ? 'http://localhost:3000' : '';
+        localStorage.removeItem('mz-tech-hub-account');
+        async function readApiResponse(response, action) {
+            const body = await response.text();
+            let result;
+            try {
+                result = body ? JSON.parse(body) : null;
+            } catch {
+                throw new Error(`The server returned an invalid response while ${action}. Please try again.`);
+            }
+            if (!result || typeof result !== 'object') {
+                const error = new Error(`The server returned an empty response while ${action}. Please try again.`);
+                error.name = 'EmptyApiResponseError';
+                throw error;
+            }
+            return result;
+        }
+        function setTheme(theme) {
+            const isDark = theme === 'dark';
+            document.body.dataset.theme = isDark ? 'dark' : 'light';
+            themeButton.textContent = isDark ? '☀' : '☾';
+            themeButton.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
+            themeButton.title = `Switch to ${isDark ? 'light' : 'dark'} mode`;
+            themeButton.setAttribute('aria-pressed', String(isDark));
+        }
+        setTheme(localStorage.getItem('mz-tech-hub-theme') === 'dark' ? 'dark' : 'light');
+        themeButton.addEventListener('click', () => {
+            const theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            setTheme(theme);
+            localStorage.setItem('mz-tech-hub-theme', theme);
+        });
+        let cart = {};
+        try {
+            const savedCart = JSON.parse(localStorage.getItem('mz-tech-hub-cart') || localStorage.getItem('ms-mobiles-cart') || '{}');
+            if (savedCart && typeof savedCart === 'object' && !Array.isArray(savedCart)) {
+                cart = Object.fromEntries(Object.entries(savedCart).flatMap(([name, item]) => {
+                    const card = products.find(product => product.querySelector('h3').textContent === name);
+                    const quantity = Number(item?.quantity);
+                    return card && Number.isInteger(quantity) && quantity > 0 && quantity <= 99
+                        ? [[name, { ...productFromCard(card), quantity }]]
+                        : [];
+                }));
+            }
+        } catch {
+            localStorage.removeItem('mz-tech-hub-cart');
+            localStorage.removeItem('ms-mobiles-cart');
+        }
+        let activeFilter = 'all';
+        let cartReturnFocus = null;
+        const productNames = new Set(products.map(product => product.querySelector('h3').textContent.trim()));
+
+        function readProductNames(key, limit) {
+            try {
+                const stored = JSON.parse(localStorage.getItem(key) || '[]');
+                return Array.isArray(stored)
+                    ? [...new Set(stored.filter(name => typeof name === 'string' && productNames.has(name)))].slice(0, limit)
+                    : [];
+            } catch {
+                return [];
+            }
+        }
+
+        let favorites = readProductNames('mz-tech-hub-favorites', products.length);
+        let recentlyViewed = readProductNames('mz-tech-hub-recently-viewed', 6);
+        let comparedProducts = readProductNames('mz-tech-hub-compare', 3);
+
+        function productFromCard(card) {
+            return {
+                name: card.querySelector('h3').textContent.trim(),
+                price: Number(card.querySelector('.price').textContent.replace('$', ''))
+            };
+        }
+
+        function saveProductNames(key, names) {
+            localStorage.setItem(key, JSON.stringify(names));
+        }
+
+        function syncProductCards() {
+            document.querySelectorAll('.product').forEach(card => {
+                const name = productFromCard(card).name;
+                const favoriteButton = card.querySelector('.favorite-toggle');
+                const compareButton = card.querySelector('.compare-toggle');
+                const isFavorite = favorites.includes(name);
+                const isCompared = comparedProducts.includes(name);
+                favoriteButton?.classList.toggle('selected', isFavorite);
+                favoriteButton?.setAttribute('aria-pressed', String(isFavorite));
+                favoriteButton?.setAttribute('aria-label', `${isFavorite ? 'Remove' : 'Save'} ${name} ${isFavorite ? 'from' : 'to'} favorites`);
+                favoriteButton?.setAttribute('title', isFavorite ? 'Remove from saved items' : 'Save for later');
+                compareButton?.classList.toggle('selected', isCompared);
+                compareButton?.setAttribute('aria-pressed', String(isCompared));
+                compareButton?.setAttribute('aria-label', `${isCompared ? 'Remove' : 'Add'} ${name} ${isCompared ? 'from' : 'to'} comparison`);
+            });
+            document.querySelectorAll('.favorite-count').forEach(count => { count.textContent = favorites.length; });
+            document.querySelector('.favorite-count-label').textContent = favorites.length ? `(${favorites.length})` : '';
+        }
+
+        function wireProductCard(card) {
+            const visual = card.querySelector('.product-visual');
+            if (!card.querySelector('.product-tools')) {
+                const tools = document.createElement('div');
+                tools.className = 'product-tools';
+                const favoriteButton = document.createElement('button');
+                favoriteButton.className = 'product-tool favorite-toggle';
+                favoriteButton.type = 'button';
+                favoriteButton.textContent = '♡';
+                const compareButton = document.createElement('button');
+                compareButton.className = 'product-tool compare-toggle';
+                compareButton.type = 'button';
+                compareButton.textContent = '⇄';
+                tools.append(favoriteButton, compareButton);
+                visual.append(tools);
+            }
+
+            const addButton = card.querySelector('.add');
+            let buyNow = card.querySelector('.buy-now');
+            if (!card.querySelector('.product-actions')) {
+                const actions = document.createElement('div');
+                actions.className = 'product-actions';
+                buyNow = document.createElement('button');
+                buyNow.className = 'buy-now';
+                buyNow.type = 'button';
+                buyNow.textContent = 'Buy it now';
+                addButton.parentElement.insertBefore(actions, addButton);
+                actions.append(addButton, buyNow);
+            }
+
+            card.querySelector('.favorite-toggle').addEventListener('click', () => toggleFavorite(productFromCard(card).name));
+            card.querySelector('.compare-toggle').addEventListener('click', () => toggleCompare(productFromCard(card).name));
+            addButton.addEventListener('click', () => addItemsToCart([card]));
+            buyNow.addEventListener('click', () => {
+                addItemsToCart([card]);
+                setCartOpen(true);
+            });
+        }
+
+        function renderProductCollection(container, emptyMessage, names) {
+            container.replaceChildren();
+            const matchingProducts = names
+                .map(name => products.find(product => productFromCard(product).name === name))
+                .filter(Boolean);
+            matchingProducts.forEach(product => {
+                const card = product.cloneNode(true);
+                container.append(card);
+                wireProductCard(card);
+            });
+            emptyMessage.hidden = matchingProducts.length > 0;
+            syncProductCards();
+        }
+
+        function renderSavedAndRecent() {
+            renderProductCollection(savedProducts, savedEmpty, favorites);
+            renderProductCollection(recentProducts, recentEmpty, recentlyViewed);
+        }
+
+        function toggleFavorite(name) {
+            favorites = favorites.includes(name)
+                ? favorites.filter(item => item !== name)
+                : [name, ...favorites];
+            saveProductNames('mz-tech-hub-favorites', favorites);
+            renderSavedAndRecent();
+            showToast(favorites.includes(name) ? `${name} saved for later` : `${name} removed from saved items`);
+        }
+
+        function toggleCompare(name) {
+            if (comparedProducts.includes(name)) {
+                comparedProducts = comparedProducts.filter(item => item !== name);
+            } else if (comparedProducts.length >= 3) {
+                showToast('Compare up to 3 products at a time');
+                return;
+            } else {
+                comparedProducts = [...comparedProducts, name];
+            }
+            saveProductNames('mz-tech-hub-compare', comparedProducts);
+            renderComparison();
+            syncProductCards();
+        }
+
+        function renderComparison() {
+            compareSection.hidden = comparedProducts.length < 2;
+            compareBar.hidden = comparedProducts.length === 0;
+            const compareOpen = document.querySelector('.compare-open');
+            compareOpen.disabled = comparedProducts.length < 2;
+            compareOpen.textContent = comparedProducts.length < 2 ? 'Select one more' : 'Compare selected';
+            compareSelection.textContent = comparedProducts.length
+                ? `${comparedProducts.length} of 3 products selected`
+                : '';
+            comparisonWrap.replaceChildren();
+            if (comparedProducts.length < 2) return;
+
+            const table = document.createElement('table');
+            table.className = 'comparison-table';
+            const caption = document.createElement('caption');
+            caption.textContent = 'Product comparison';
+            table.append(caption);
+            const head = document.createElement('thead');
+            const headingRow = document.createElement('tr');
+            const emptyHeading = document.createElement('th');
+            emptyHeading.scope = 'col';
+            emptyHeading.textContent = 'Product';
+            headingRow.append(emptyHeading);
+            const compared = comparedProducts
+                .map(name => products.find(product => productFromCard(product).name === name))
+                .filter(Boolean);
+            compared.forEach(card => {
+                const heading = document.createElement('th');
+                heading.scope = 'col';
+                heading.textContent = productFromCard(card).name;
+                headingRow.append(heading);
+            });
+            head.append(headingRow);
+            table.append(head);
+
+            const body = document.createElement('tbody');
+            [
+                ['Price', card => card.querySelector('.price').textContent.trim()],
+                ['Category', card => card.dataset.category],
+                ['Rating', card => card.querySelector('.stars').textContent.trim()]
+            ].forEach(([label, getValue]) => {
+                const row = document.createElement('tr');
+                const rowHeading = document.createElement('th');
+                rowHeading.scope = 'row';
+                rowHeading.textContent = label;
+                row.append(rowHeading);
+                compared.forEach(card => {
+                    const cell = document.createElement('td');
+                    cell.textContent = getValue(card);
+                    row.append(cell);
+                });
+                body.append(row);
+            });
+            const actionRow = document.createElement('tr');
+            const actionHeading = document.createElement('th');
+            actionHeading.scope = 'row';
+            actionHeading.textContent = 'Actions';
+            actionRow.append(actionHeading);
+            compared.forEach(card => {
+                const cell = document.createElement('td');
+                const addButton = document.createElement('button');
+                addButton.type = 'button';
+                addButton.className = 'comparison-add';
+                addButton.textContent = 'Add to cart';
+                addButton.addEventListener('click', () => addItemsToCart([card]));
+                const removeButton = document.createElement('button');
+                removeButton.type = 'button';
+                removeButton.className = 'comparison-remove';
+                removeButton.textContent = 'Remove';
+                removeButton.addEventListener('click', () => toggleCompare(productFromCard(card).name));
+                cell.append(addButton, removeButton);
+                actionRow.append(cell);
+            });
+            body.append(actionRow);
+            table.append(body);
+            comparisonWrap.append(table);
+        }
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            window.clearTimeout(showToast.timer);
+            showToast.timer = window.setTimeout(() => toast.classList.remove('show'), 1800);
+        }
+
+        function recordRecentlyViewed(card) {
+            const name = productFromCard(card).name;
+            recentlyViewed = [name, ...recentlyViewed.filter(item => item !== name)].slice(0, 6);
+            saveProductNames('mz-tech-hub-recently-viewed', recentlyViewed);
+            renderProductCollection(recentProducts, recentEmpty, recentlyViewed);
+        }
+
+        function saveCart() {
+            localStorage.setItem('mz-tech-hub-cart', JSON.stringify(cart));
+        }
+
+        function renderCart() {
+            const items = Object.entries(cart);
+            const totalItems = items.reduce((total, [, item]) => total + item.quantity, 0);
+            const subtotal = items.reduce((total, [, item]) => total + item.price * item.quantity, 0);
+            count.textContent = totalItems;
+            cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+            const remainingForShipping = Math.max(0, 50 - subtotal);
+            shippingProgressMessage.textContent = remainingForShipping > 0
+                ? `You’re $${remainingForShipping.toFixed(2)} away from free shipping.`
+                : 'You’ve unlocked free shipping!';
+            shippingProgressBar.value = Math.min(subtotal, 50);
+            products.forEach(product => {
+                const productName = product.querySelector('h3').textContent;
+                const addButton = product.querySelector('.add');
+                if (addButton) addButton.classList.toggle('is-added', Boolean(cart[productName]));
+            });
+            cartItems.replaceChildren();
+            if (!items.length) {
+                const emptyMessage = document.createElement('p');
+                emptyMessage.className = 'empty-cart';
+                emptyMessage.textContent = 'Your bag is waiting for something good.';
+                cartItems.append(emptyMessage);
+                return;
+            }
+            items.forEach(([name, item]) => {
+                const row = document.createElement('div');
+                row.className = 'cart-item';
+                const details = document.createElement('div');
+                const title = document.createElement('strong');
+                title.textContent = name;
+                const price = document.createElement('span');
+                price.textContent = `$${item.price.toFixed(2)} each`;
+                details.append(title, price);
+                const quantity = document.createElement('div');
+                quantity.className = 'quantity';
+                const decrease = document.createElement('button');
+                decrease.type = 'button';
+                decrease.dataset.cartAction = 'decrease';
+                decrease.dataset.product = name;
+                decrease.setAttribute('aria-label', `Decrease ${name}`);
+                decrease.textContent = '−';
+                const amount = document.createElement('span');
+                amount.textContent = item.quantity;
+                const increase = document.createElement('button');
+                increase.type = 'button';
+                increase.dataset.cartAction = 'increase';
+                increase.dataset.product = name;
+                increase.setAttribute('aria-label', `Increase ${name}`);
+                increase.textContent = '+';
+                quantity.append(decrease, amount, increase);
+                row.append(details, quantity);
+                cartItems.append(row);
+            });
+        }
+
+        function setCartOpen(isOpen) {
+            const wasOpen = cartDrawer.classList.contains('open');
+            if (wasOpen === isOpen) return;
+
+            if (isOpen) {
+                cartReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : cartButton;
+            }
+            cartDrawer.classList.toggle('open', isOpen);
+            cartOverlay.classList.toggle('open', isOpen);
+            cartDrawer.setAttribute('aria-hidden', String(!isOpen));
+            cartOverlay.setAttribute('aria-hidden', String(!isOpen));
+            cartDrawer.inert = !isOpen;
+            cartOverlay.inert = !isOpen;
+            cartButton.setAttribute('aria-expanded', String(isOpen));
+            document.body.classList.toggle('cart-open', isOpen);
+
+            if (isOpen) {
+                document.querySelector('.close-cart').focus();
+            } else {
+                if (cartReturnFocus?.isConnected) cartReturnFocus.focus();
+                cartReturnFocus = null;
+            }
+        }
+
+        function setAccountMode(mode) {
+            accountMode = mode;
+            const isSignUp = mode === 'signup';
+            accountTitle.textContent = isSignUp ? 'Make it yours' : 'Welcome back';
+            nameField.hidden = !isSignUp;
+            nameField.querySelector('input').required = isSignUp;
+            accountSubmit.textContent = isSignUp ? 'Create account' : 'Sign in';
+            accountTabs.forEach(tab => {
+                const active = tab.dataset.accountMode === mode;
+                tab.classList.toggle('active', active);
+                tab.setAttribute('aria-selected', String(active));
+            });
+            accountMessage.textContent = '';
+        }
+
+        function setAccountOpen(isOpen) {
+            accountOverlay.classList.toggle('open', isOpen);
+            accountModal.setAttribute('aria-hidden', String(!isOpen));
+            accountOverlay.setAttribute('aria-hidden', String(!isOpen));
+            if (isOpen) accountForm.querySelector('input[name="email"]').focus();
+        }
+
+        function updateAccountButton() {
+            accountButton.textContent = currentAccount?.name ? currentAccount.name.split(' ')[0] : 'Sign in';
+            signOut.hidden = !currentAccount;
+            accountForm.hidden = Boolean(currentAccount);
+            if (currentAccount) accountMessage.textContent = `Signed in as ${currentAccount.email}.`;
+        }
+
+        function updateProducts() {
+            const query = search.value.trim().toLowerCase();
+            let visibleProducts = 0;
+            products.forEach(product => {
+                const isNewArrival = product.querySelector('.badge')?.textContent.trim() === 'NEW';
+                const matchesFilter = activeFilter === 'all' || (activeFilter === 'new' ? isNewArrival : product.dataset.category === activeFilter);
+                const searchableText = `${product.querySelector('h3').textContent} ${product.dataset.category}`.toLowerCase();
+                const matchesSearch = searchableText.includes(query);
+                product.hidden = !(matchesFilter && matchesSearch);
+                if (!product.hidden) visibleProducts += 1;
+            });
+            clearSearch.hidden = !query;
+            noResults.hidden = visibleProducts > 0;
+            productStatus.textContent = visibleProducts === 1 ? '1 product' : `${visibleProducts} products`;
+        }
+
+        function addItemsToCart(items) {
+            if (!items.length) return;
+            items.forEach(product => {
+                const item = productFromCard(product);
+                cart[item.name] = cart[item.name] || { price: item.price, quantity: 0 };
+                cart[item.name].quantity += 1;
+            });
+            saveCart();
+            renderCart();
+            toast.textContent = items.length > 1 ? `${items.length} items added to your bag` : `${items[0].dataset.name} added to your bag`;
+            toast.classList.add('show');
+            window.setTimeout(() => {
+                toast.textContent = 'Added to your bag';
+                toast.classList.remove('show');
+            }, 1800);
+        }
+
+        function renderTrackedOrder(order) {
+            trackingResult.replaceChildren();
+            const card = document.createElement('article');
+            card.className = 'order-result-card';
+            const heading = document.createElement('h3');
+            heading.textContent = `Order ${order.id}`;
+            const status = document.createElement('p');
+            status.className = 'order-status';
+            status.textContent = `Status: ${order.status}`;
+            const created = document.createElement('p');
+            created.textContent = `Placed ${new Date(order.createdAt).toLocaleString()}`;
+            const itemList = document.createElement('ul');
+            itemList.className = 'order-items-list';
+            order.items.forEach(item => {
+                const row = document.createElement('li');
+                row.textContent = `${item.name} × ${item.quantity} — $${Number(item.lineTotal).toFixed(2)}`;
+                itemList.append(row);
+            });
+            const total = document.createElement('p');
+            total.className = 'order-total';
+            total.textContent = `Order total: $${Number(order.total).toFixed(2)}`;
+            card.append(heading, status, created, itemList, total);
+            if (order.status === 'cancelled') {
+                const cancelled = document.createElement('p');
+                cancelled.className = 'order-cancelled';
+                cancelled.textContent = 'This order was cancelled. Contact us if you need help.';
+                card.append(cancelled);
+            } else {
+                const stages = ['received', 'processing', 'shipped', 'delivered'];
+                const currentStage = stages.indexOf(order.status);
+                const progress = document.createElement('ol');
+                progress.className = 'order-progress';
+                progress.setAttribute('aria-label', 'Order progress');
+                stages.forEach((stage, index) => {
+                    const step = document.createElement('li');
+                    step.textContent = stage;
+                    step.classList.toggle('complete', index <= currentStage);
+                    step.classList.toggle('current', index === currentStage);
+                    progress.append(step);
+                });
+                card.append(progress);
+            }
+            trackingResult.append(card);
+        }
+
+        trackingForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            if (!trackingForm.reportValidity()) return;
+            trackSubmit.disabled = true;
+            trackingResult.textContent = 'Looking up your order...';
+            try {
+                const response = await fetch(`${apiBase}/api/orders/track`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        orderId: trackingForm.elements.orderId.value.trim().toUpperCase(),
+                        email: trackingForm.elements.email.value.trim()
+                    })
+                });
+                const result = await readApiResponse(response, 'looking up your order');
+                if (!response.ok) throw new Error(result.error || 'Unable to find that order.');
+                renderTrackedOrder(result.order);
+            } catch (error) {
+                trackingResult.textContent = error.message || 'Unable to look up your order right now. Please try again.';
+            } finally {
+                trackSubmit.disabled = false;
+            }
+        });
+        trackingForm.elements.orderId.addEventListener('input', event => {
+            event.target.value = event.target.value.toUpperCase();
+        });
+
+        filters.forEach(filter => filter.addEventListener('click', () => {
+            filters.forEach(item => item.classList.remove('active'));
+            filter.classList.add('active');
+            activeFilter = filter.dataset.filter;
+            updateProducts();
+        }));
+        sortProducts.addEventListener('change', () => {
+            const orderedProducts = [...products];
+            const comparators = {
+                featured: (first, second) => products.indexOf(first) - products.indexOf(second),
+                'price-low': (first, second) => Number(first.querySelector('.price').textContent.replace('$', '')) - Number(second.querySelector('.price').textContent.replace('$', '')),
+                'price-high': (first, second) => Number(second.querySelector('.price').textContent.replace('$', '')) - Number(first.querySelector('.price').textContent.replace('$', '')),
+                name: (first, second) => first.querySelector('h3').textContent.localeCompare(second.querySelector('h3').textContent)
+            };
+            orderedProducts.sort(comparators[sortProducts.value]);
+            productGrid.append(...orderedProducts);
+        });
+        search.addEventListener('input', updateProducts);
+        clearSearch.addEventListener('click', () => {
+            search.value = '';
+            updateProducts();
+            search.focus();
+        });
+        products.forEach(wireProductCard);
+        if ('IntersectionObserver' in window) {
+            const recentObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+                        recordRecentlyViewed(entry.target);
+                        recentObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.6 });
+            products.forEach(product => recentObserver.observe(product));
+        } else {
+            products.forEach(product => product.addEventListener('click', event => {
+                if (!event.target.closest('button')) recordRecentlyViewed(product);
+            }));
+        }
+
+        cartButton.addEventListener('click', () => setCartOpen(true));
+        document.querySelector('.close-cart').addEventListener('click', () => setCartOpen(false));
+        cartOverlay.addEventListener('click', () => setCartOpen(false));
+        document.querySelector('.compare-open').addEventListener('click', () => {
+            document.getElementById('compare-products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        document.querySelector('.compare-clear').addEventListener('click', () => {
+            comparedProducts = [];
+            saveProductNames('mz-tech-hub-compare', comparedProducts);
+            renderComparison();
+            syncProductCards();
+        });
+        accountButton.addEventListener('click', () => setAccountOpen(true));
+        document.querySelector('.close-account').addEventListener('click', () => setAccountOpen(false));
+        accountOverlay.addEventListener('click', event => {
+            if (event.target === accountOverlay) setAccountOpen(false);
+        });
+        accountTabs.forEach(tab => tab.addEventListener('click', () => setAccountMode(tab.dataset.accountMode)));
+        accountForm.addEventListener('submit', async event => {
+            event.preventDefault();
+            const formData = new FormData(accountForm);
+            const email = String(formData.get('email')).trim();
+            const name = String(formData.get('name') || '').trim();
+            if (accountMode === 'signup' && name.length < 2) {
+                accountMessage.textContent = 'Please enter your full name.';
+                return;
+            }
+            const password = String(formData.get('password') || '');
+            accountSubmit.disabled = true;
+            accountMessage.textContent = accountMode === 'signup' ? 'Creating your account...' : 'Signing in...';
+            try {
+                const requestBody = JSON.stringify({ name, email, password });
+                let response = await fetch(`${apiBase}/api/auth/${accountMode === 'signup' ? 'register' : 'login'}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: requestBody
+                });
+                let result;
+                try {
+                    result = await readApiResponse(response, accountMode === 'signup' ? 'creating your account' : 'signing in');
+                } catch (error) {
+                    if (accountMode !== 'signup' || error.name !== 'EmptyApiResponseError') throw error;
+                    response = await fetch(`${apiBase}/api/auth/login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: requestBody
+                    });
+                    try {
+                        result = await readApiResponse(response, 'checking your new account');
+                    } catch {
+                        throw new Error('The account service did not confirm the result. Please try signing in; if this is your first time, try creating your account again.');
+                    }
+                    if (!response.ok) {
+                        throw new Error('The account service did not confirm the result. Please try signing in; if this is your first time, try creating your account again.');
+                    }
+                }
+                if (!response.ok) throw new Error(result.error || 'Unable to access your account.');
+                currentAccount = result.user;
+                accountMessage.textContent = accountMode === 'signup' ? 'Your account is ready.' : 'You are signed in.';
+                updateAccountButton();
+            } catch (error) {
+                accountMessage.textContent = error.message || 'Unable to reach the account service. Please try again.';
+            } finally {
+                accountSubmit.disabled = false;
+            }
+        });
+        signOut.addEventListener('click', () => {
+            currentAccount = null;
+            setAccountMode('signin');
+            accountForm.reset();
+            updateAccountButton();
+            accountMessage.textContent = 'You have been signed out.';
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                setCartOpen(false);
+                setAccountOpen(false);
+            }
+            if (event.key === 'Tab' && cartDrawer.classList.contains('open')) {
+                const focusableElements = [...cartDrawer.querySelectorAll('button:not([disabled]), input:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')]
+                    .filter(element => !element.hidden && element.getClientRects().length > 0);
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+                if (event.shiftKey && (document.activeElement === firstElement || !cartDrawer.contains(document.activeElement))) {
+                    event.preventDefault();
+                    lastElement.focus();
+                } else if (!event.shiftKey && (document.activeElement === lastElement || !cartDrawer.contains(document.activeElement))) {
+                    event.preventDefault();
+                    firstElement.focus();
+                }
+            }
+            const isSearchShortcut = event.key === '/' && !event.ctrlKey && !event.metaKey
+                || (event.key.toLowerCase() === 'k' && (event.ctrlKey || event.metaKey));
+            const target = event.target;
+            const isTyping = target instanceof HTMLElement
+                && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName));
+            if (isSearchShortcut && !isTyping) {
+                event.preventDefault();
+                search.focus();
+                search.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+        cartItems.addEventListener('click', event => {
+            const control = event.target.closest('[data-cart-action]');
+            if (!control) return;
+            const item = cart[control.dataset.product];
+            item.quantity += control.dataset.cartAction === 'increase' ? 1 : -1;
+            if (item.quantity <= 0) delete cart[control.dataset.product];
+            saveCart();
+            renderCart();
+        });
+        document.querySelector('.checkout').addEventListener('click', async () => {
+            if (!Object.keys(cart).length) {
+                checkoutMessage.textContent = 'Add an item before checking out.';
+                return;
+            }
+            const customerName = document.querySelector('.checkout-name');
+            const customerEmail = document.querySelector('.checkout-email');
+            if (!customerName.reportValidity() || !customerEmail.reportValidity()) return;
+            const checkoutButton = document.querySelector('.checkout');
+            checkoutButton.disabled = true;
+            checkoutMessage.textContent = 'Creating your order...';
+            try {
+                const response = await fetch(`${apiBase}/api/orders`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        items: Object.entries(cart).map(([name, item]) => ({ name, quantity: item.quantity })),
+                        customer: { name: customerName.value.trim(), email: customerEmail.value.trim() }
+                    })
+                });
+                const result = await readApiResponse(response, 'placing your order');
+                if (!response.ok) throw new Error(result.error || 'Unable to create order.');
+                checkoutMessage.textContent = `Order ${result.order.id} created - total $${result.order.total.toFixed(2)}.`;
+                Object.keys(cart).forEach(name => delete cart[name]);
+                saveCart();
+                renderCart();
+            } catch (error) {
+                checkoutMessage.textContent = error.message || 'Unable to place your order. Please try again.';
+            } finally {
+                checkoutButton.disabled = false;
+            }
+        });
+        document.querySelectorAll('[data-category-link]').forEach(link => link.addEventListener('click', event => {
+            event.preventDefault();
+            const category = link.dataset.categoryLink;
+            const filter = document.querySelector(`[data-filter="${category}"]`);
+            if (filter) filter.click();
+            search.value = '';
+            updateProducts();
+            document.getElementById('shop').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }));
+        updateProducts();
+        syncProductCards();
+        renderSavedAndRecent();
+        renderComparison();
+        updateAccountButton();
+        renderCart();
+    </script>
+</body>
+>
+</html>
